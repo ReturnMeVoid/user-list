@@ -4,6 +4,7 @@ import { BaseButton } from "@/ui"
 import { computed } from "vue"
 
 const { user } = defineProps<{ user: User }>()
+const emit = defineEmits<{ edit: [user: User] }>()
 
 const lastVisited = computed(() => {
   const date = new Date(user.lastVisitedAt * 1000)
@@ -38,7 +39,9 @@ const lastVisited = computed(() => {
       </li>
     </ul>
 
-    <BaseButton class="user-card__edit-button">Edit</BaseButton>
+    <BaseButton class="user-card__edit-button" @mouseup="emit('edit', user)">
+      Edit
+    </BaseButton>
   </li>
 </template>
 

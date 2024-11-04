@@ -1,0 +1,28 @@
+.user-edit-modal {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 16px;
+  }
+
+  &__success {
+    color: green;
+    cursor: inherit;
+  }
+
+  &__error {
+    color: var(--c-danger);
+    cursor: inherit;
+  }
+}
+
+.accent-text {
+  color: var(--c-accent);
+}

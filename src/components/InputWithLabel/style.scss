@@ -1,0 +1,18 @@
+.input-with-label {
+  &__label {
+    display: block;
+    width: fit-content;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: var(--c-primary);
+  }
+
+  &__input {
+    width: 100%;
+  }
+}
+
+.asterisk-icon {
+  font-size: 20px;
+  color: var(--c-danger);
+}

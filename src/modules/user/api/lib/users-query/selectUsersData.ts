@@ -1,8 +1,11 @@
 import type { APIPaginationInfo } from "@/api"
-import { linkHeaderToObject } from "@/lib/linkHeaderToObject"
-import type { UsersQueryFnData, UsersSelectedData } from "../composables/useUsersQuery"
+import { linkHeaderToObject } from "@/lib"
+import type {
+  UsersQueryFnData,
+  UsersQuerySelectedData
+} from "../../composables/useUsersQuery"
 
-export const selectUsersData = (data: UsersQueryFnData): UsersSelectedData => {
+export const selectUsersData = (data: UsersQueryFnData): UsersQuerySelectedData => {
   const linkHeader = data.headers.get("Link")
 
   const paginationInfo = linkHeaderToObject<keyof APIPaginationInfo, number | null>(

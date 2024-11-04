@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { BaseButton } from "@/ui"
 
-const { value, isMaxPagesDefined } = defineProps<{
+defineProps<{
   value: number;
   isMaxPagesDefined: boolean;
 }>()

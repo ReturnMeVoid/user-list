@@ -4,8 +4,10 @@ import { PageHeader, PaginationButtons } from "@/components"
 import type { User } from "@/modules/user"
 import { FluidContainer, LoadingSpinner, SkeletonBlock } from "@/ui"
 import { useRouteQuery } from "@vueuse/router"
+import { ref } from "vue"
 import { useUsersQuery } from "../../api/composables/useUsersQuery"
 import UserCard from "../UserCard/UserCard.vue"
+import UserEditModal from "../UserEditModal/UserEditModal.vue"
 import UserFilters from "../UserFilters/UserFilters.vue"
 import UsersPerPage from "../UsersPerPage/UsersPerPage.vue"
 
@@ -26,10 +28,21 @@ const { data: users, isLoading, isFetching } = useUsersQuery({
   sort,
   order,
 })
+
+const currentUserEdit = ref<User>()
+const isModalOpen = ref(false)
+
+const handleEdit = (user: User) => {
+  if (!user) throw new Error('Cannot find user')
+  currentUserEdit.value = user
+  isModalOpen.value = true
+}
 </script>
 
 <template>
   <div class="users-layout">
+    <UserEditModal v-model="isModalOpen" :user="currentUserEdit!" />
+
     <PageHeader>
       <h1 class="users-layout__heading">User List</h1>
 
@@ -45,7 +58,12 @@ const { data: users, isLoading, isFetching } = useUsersQuery({
 
       <ul class="users-layout__users-list">
         <template v-if="!isLoading && users?.data.length">
-          <UserCard v-for="user in users.data" :key="user.id" :user />
+          <UserCard
+            v-for="user in users.data"
+            :key="user.id"
+            :user
+            @edit="handleEdit(user)"
+          />
         </template>
 
         <template v-else-if="!isLoading && users?.data.length === 0">

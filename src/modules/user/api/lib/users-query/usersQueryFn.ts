@@ -2,10 +2,10 @@ import { handledFetch } from "@/api"
 import type { QueryFunction } from "@tanstack/vue-query"
 import { unref } from "vue"
 import type {
-  UsersData,
+  UsersQueryData,
   UsersQueryFnData,
   UsersQueryKey
-} from "../composables/useUsersQuery"
+} from "../../composables/useUsersQuery"
 
 type UsersQueryFn = QueryFunction<UsersQueryFnData, UsersQueryKey>
 
@@ -29,5 +29,5 @@ export const usersQueryFn: UsersQueryFn = async ({ queryKey: [, params], signal 
     searchParams.append(key, paramValue.toString())
   })
 
-  return handledFetch<UsersData>(`/users?${searchParams}`, { signal })
+  return handledFetch<UsersQueryData>(`/users?${searchParams}`, { signal })
 }

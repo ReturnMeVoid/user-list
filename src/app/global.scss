@@ -26,6 +26,10 @@
   scrollbar-width: thin;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--c-background);
 }

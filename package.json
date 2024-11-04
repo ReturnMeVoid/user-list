@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"npm run json-server\" vite",
-    "json-server": "json-server -p 3001 --delay 1200 ./json-server/db.json",
+    "json-server": "json-server -p 3001 --delay 1200 --watch ./json-server/db.json",
     "lint:eslint": "eslint ./src",
     "lint:stylelint": "stylelint ./src/**/*.{vue,css,scss,sass}",
     "build": "vue-tsc -b && vite build",

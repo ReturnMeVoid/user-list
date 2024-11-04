@@ -1,5 +1,9 @@
+<script setup lang="ts">
+const modelValue = defineModel({ default: "" })
+</script>
+
 <template>
-  <input class="input-field" autocomplete="off" />
+  <input v-model="modelValue" class="input-field" autocomplete="off" />
 </template>
 
 <style scoped lang="scss" src="./style.scss" />
