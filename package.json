@@ -1,0 +1,40 @@
+{
+  "name": "user-list",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"npm run json-server\" vite",
+    "json-server": "json-server -p 3001 --delay 1200 ./json-server/db.json",
+    "lint:eslint": "eslint ./src",
+    "lint:stylelint": "stylelint ./src/**/*.{vue,css,scss,sass}",
+    "build": "vue-tsc -b && vite build",
+    "preview": "concurrently \"npm run json-server\" vite preview"
+  },
+  "dependencies": {
+    "@tanstack/vue-query": "^5.59.16",
+    "@vueuse/router": "^11.2.0",
+    "concurrently": "^9.0.1",
+    "json-server": "^0.17.4",
+    "vue": "^3.5.12",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.13.0",
+    "@types/node": "^22.8.4",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "eslint": "^9.13.0",
+    "eslint-plugin-vue": "^9.30.0",
+    "globals": "^15.11.0",
+    "postcss-html": "^1.7.0",
+    "sass-embedded": "^1.80.6",
+    "stylelint": "^16.10.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-recess-order": "^5.1.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.12.2",
+    "vite": "^5.4.9",
+    "vue-tsc": "^2.1.6"
+  }
+}

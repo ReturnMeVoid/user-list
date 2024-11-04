@@ -1,0 +1,13 @@
+.sort-section__button {
+  &.button_active {
+    font-weight: normal;
+    color: black;
+  }
+}
+
+.arrow-icon {
+  width: 14px;
+  font-size: 24px;
+  color: var(--c-primary);
+  cursor: inherit;
+}

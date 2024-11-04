@@ -1,0 +1,11 @@
+.pagination-buttons {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+  padding-block: 12px;
+
+  &__navigate-button {
+    padding: 0;
+    color: var(--c-primary);
+  }
+}

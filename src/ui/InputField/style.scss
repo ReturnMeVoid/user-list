@@ -1,0 +1,22 @@
+.input-field {
+  display: block;
+  min-width: 230px;
+  padding: 8px 12px;
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  cursor: text;
+  background-color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 2px 2px 1px rgb(0 0 0 / 10%);
+
+  &:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  &[disabled], &[disabled="true"] {
+    cursor: not-allowed;
+  }
+}

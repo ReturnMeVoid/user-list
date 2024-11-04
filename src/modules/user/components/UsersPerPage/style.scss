@@ -1,0 +1,21 @@
+.users-per-page {
+  display: flex;
+  flex: none;
+  gap: 8px;
+  align-items: center;
+  width: fit-content;
+  height: 32px;
+  padding-inline: 12px;
+  color: black;
+  background-color: white;
+  border-radius: var(--border-radius-sm);
+  box-shadow: 2px 2px 1px rgb(0 0 0 / 10%);
+
+  &__number {
+    display: flex;
+    justify-content: center;
+    width: 2.2ch;
+    font-weight: bold;
+    color: var(--c-accent);
+  }
+}

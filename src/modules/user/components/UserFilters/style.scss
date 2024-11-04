@@ -1,0 +1,18 @@
+.user-filters {
+  position: sticky;
+  top: var(--header-height);
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 12px;
+  width: var(--sidebar-width);
+
+  &__form-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 13px;
+    border: 3px solid var(--c-primary);
+    border-radius: var(--border-radius-md);
+  }
+}
