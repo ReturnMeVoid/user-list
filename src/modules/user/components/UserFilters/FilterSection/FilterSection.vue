@@ -10,7 +10,7 @@ type Year = typeof YEARS[number]
 const lastVisitedFrom = useRouteQuery<number | undefined>("lastVisited_gte")
 const lastVisitedTo = useRouteQuery<number | undefined>("lastVisited_lte")
 
-const checkboxModelEntries: [Year, boolean][] = YEARS.map(year => [year, true])
+const checkboxModelEntries: [Year, boolean][] = YEARS.map(year => [year, false])
 const checkboxModels = reactive(Object.fromEntries(checkboxModelEntries))
 
 const from = ref<Year | null>(null)
