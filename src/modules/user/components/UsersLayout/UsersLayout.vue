@@ -18,6 +18,8 @@ const page = useRouteQuery<number | undefined>("page", 1, { transform: Number })
 const pageSize = useRouteQuery<number | undefined>("page-size", 10, { transform: Number })
 const sort = useRouteQuery<keyof User | undefined>("sort")
 const order = useRouteQuery<APISortDirection | undefined>("order")
+const lastVisitedFrom = useRouteQuery<number | undefined>("lastVisited_gte")
+const lastVisitedTo = useRouteQuery<number | undefined>("lastVisited_lte")
 
 const { data: users, isLoading, isFetching } = useUsersQuery({
   page,
@@ -27,21 +29,24 @@ const { data: users, isLoading, isFetching } = useUsersQuery({
   searchEmail,
   sort,
   order,
+  lastVisitedFrom,
+  lastVisitedTo,
 })
 
-const currentUserEdit = ref<User>()
+const currentEditingUser = ref<User>()
 const isModalOpen = ref(false)
 
-const handleEdit = (user: User) => {
-  if (!user) throw new Error('Cannot find user')
-  currentUserEdit.value = user
+const handleEdit = (user: User | undefined) => {
+  if (!user) throw new Error("Cannot find user")
+
+  currentEditingUser.value = user
   isModalOpen.value = true
 }
 </script>
 
 <template>
   <div class="users-layout">
-    <UserEditModal v-model="isModalOpen" :user="currentUserEdit!" />
+    <UserEditModal v-model="isModalOpen" :user="currentEditingUser!" />
 
     <PageHeader>
       <h1 class="users-layout__heading">User List</h1>
@@ -66,7 +71,7 @@ const handleEdit = (user: User) => {
           />
         </template>
 
-        <template v-else-if="!isLoading && users?.data.length === 0">
+        <template v-else-if="!isLoading && !users?.data.length">
           <div class="users-layout__no-data"><span>:(</span>No data found</div>
         </template>
 

@@ -7,8 +7,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 0,
-    }
-  }
+    },
+  },
 })
 
 createApp(App)

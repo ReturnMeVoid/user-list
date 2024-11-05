@@ -1,0 +1,14 @@
+.filter-section {
+  align-items: center;
+
+  &__label {
+    font-size: 18px;
+    color: var(--c-primary);
+    cursor: inherit;
+  }
+}
+
+.accent-text {
+  font-weight: bold;
+  color: var(--c-accent);
+}

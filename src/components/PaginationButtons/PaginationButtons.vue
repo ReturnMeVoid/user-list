@@ -5,10 +5,7 @@ import PageButton from "./PageButton/PageButton.vue"
 
 const MAX_BUTTON_COUNT = 5
 
-const props = defineProps<{
-  maxPages?: number | null;
-}>()
-
+const props = defineProps<{ maxPages?: number | null }>()
 const currentPage = defineModel<number>("page", { default: 1 })
 
 const maxPagesState = ref(props.maxPages ?? MAX_BUTTON_COUNT)

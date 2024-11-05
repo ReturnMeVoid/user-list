@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { RangeInput } from "@/ui";
-import { useQueryClient } from "@tanstack/vue-query";
-import { ref } from "vue";
-import { USERS_QUERY_ID } from "../../api/composables/useUsersQuery";
+import { RangeInput } from "@/ui"
+import { useQueryClient } from "@tanstack/vue-query"
+import { ref } from "vue"
+import { USERS_QUERY_ID } from "../../api/composables/useUsersQuery"
 
 const pageSize = defineModel<number>("pageSize")
 const inputValue = ref(pageSize.value);
@@ -14,7 +14,6 @@ const handleChange = () => {
   queryClient.removeQueries({ queryKey: [USERS_QUERY_ID] })
   pageSize.value = inputValue.value || 1
 }
-
 </script>
 
 <template>

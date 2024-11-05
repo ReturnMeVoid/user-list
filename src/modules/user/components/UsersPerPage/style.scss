@@ -9,7 +9,7 @@
   color: black;
   background-color: white;
   border-radius: var(--border-radius-sm);
-  box-shadow: 2px 2px 1px rgb(0 0 0 / 10%);
+  box-shadow: var(--box-shadow-sm);
 
   &__number {
     display: flex;

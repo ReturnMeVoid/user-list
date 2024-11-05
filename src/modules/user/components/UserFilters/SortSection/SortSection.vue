@@ -13,21 +13,26 @@ const sortingProperties: Partial<Record<keyof User, string>> = {
   email: "E-mail",
 }
 
-const handleSort = (key: keyof typeof sortingProperties) => {
-  if (key === sort.value) {
-    if (order.value === "asc") {
+const handleSort = (property: keyof typeof sortingProperties) => {
+  if (sort.value !== property) {
+    order.value = "asc"
+    sort.value = property
+    return
+  }
+
+  switch (order.value) {
+    case "asc":
       order.value = "desc"
-      sort.value = key
-    } else if (order.value === "desc") {
+      sort.value = property
+      break
+    case "desc":
       order.value = undefined
       sort.value = undefined
-    } else {
+      break
+    case undefined:
       order.value = "asc"
-      sort.value = key
-    }
-  } else {
-    order.value = "asc"
-    sort.value = key
+      sort.value = property
+      break
   }
 }
 </script>
@@ -39,14 +44,13 @@ const handleSort = (key: keyof typeof sortingProperties) => {
       :key
       :isActive="sort === key && !!order"
       fullWidth
-      class="sort-section__button"
+      class="sort-section__button sort-button"
       @mouseup="handleSort(key)"
     >
       Sort By {{ text }}&nbsp;
 
-      <span class="arrow-icon">
-        {{ sort === key && order === "asc" ? "⬆" : null }}
-        {{ sort === key && order === "desc" ? "⬇" : null }}
+      <span :class="`sort-button__icon-wrapper sort-button__icon-wrapper_${order}`">
+        <span v-show="sort === key" class="sort-button__icon" />
       </span>
     </BaseButton>
   </div>

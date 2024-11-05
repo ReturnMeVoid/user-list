@@ -15,7 +15,7 @@
   background-color: white;
   border: none;
   border-radius: var(--border-radius-sm);
-  box-shadow: 2px 2px 1px rgb(0 0 0 / 10%);
+  box-shadow: var(--box-shadow-sm);
   transition: transform 300ms;
   will-change: transform;
 
@@ -26,7 +26,7 @@
 
   &:focus-visible,
   &:hover:not([disabled], [disabled="true"]) {
-    box-shadow: 4px 4px 8px rgb(0 0 0 / 20%);
+    box-shadow: var(--box-shadow-sm-active);
     transform: scale(1.05);
   }
 

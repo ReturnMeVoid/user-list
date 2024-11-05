@@ -16,6 +16,8 @@ export type UserQueryKeyParams = Partial<{
   searchEmail: MaybeRef<string | undefined>;
   sort: MaybeRef<keyof User | undefined>;
   order: MaybeRef<APISortDirection | undefined>;
+  lastVisitedFrom: MaybeRef<number | undefined>;
+  lastVisitedTo: MaybeRef<number | undefined>;
 }>
 
 export type UsersQueryKey = Readonly<[typeof USERS_QUERY_ID, UserQueryKeyParams]>

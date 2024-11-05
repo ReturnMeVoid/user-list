@@ -3,8 +3,10 @@ import { htmlBooleanAttribute } from "@/lib"
 import { InputField } from "@/ui"
 import { computed, useAttrs, useId } from "vue"
 
-defineProps<{ labelText?: string }>()
+defineProps<{ label?: string }>()
 const modelValue = defineModel({ default: "" })
+
+defineOptions({ inheritAttrs: false })
 
 const id = useId()
 const attrs = useAttrs()
@@ -21,7 +23,7 @@ const isRequired = computed(() => {
 <template>
   <div class="input-with-label">
     <label :for="id" class="input-with-label__label">
-      {{ labelText }}
+      <slot name="label">{{ label }}</slot>
       <span v-if="isRequired" class="asterisk-icon">*</span>
     </label>
 

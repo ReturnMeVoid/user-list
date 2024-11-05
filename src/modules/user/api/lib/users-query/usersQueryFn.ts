@@ -20,6 +20,8 @@ export const usersQueryFn: UsersQueryFn = async ({ queryKey: [, params], signal 
     "firstName_like": params.searchFirstName,
     "lastName_like": params.searchLastName,
     "email_like": params.searchEmail,
+    "lastVisitedAt_gte": params.lastVisitedFrom,
+    "lastVisitedAt_lte": params.lastVisitedTo,
   }
 
   Object.entries(searchParamsMap).forEach(([key, value]) => {

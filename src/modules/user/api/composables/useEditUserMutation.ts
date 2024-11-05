@@ -15,10 +15,10 @@ export type EditUserMutationOptions = MutationOptions<
   EditUserVariables
 >
 
-export const useEditUserMutation = (onSettled?: EditUserMutationOptions["onSettled"]) => {
+export const useEditUserMutation = (mutationOptions: EditUserMutationOptions) => {
   return useMutation<EditUserData, EditUserError, EditUserVariables>({
     mutationKey: [EDIT_USER_MUTATION_KEY],
     mutationFn: editUserMutationFn,
-    onSettled,
+    ...mutationOptions,
   })
 }

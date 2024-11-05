@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { InputField } from "@/ui"
+
+const modelValue = defineModel({ default: "" })
 </script>
 
 <template>
-  <InputField type="search" class="search-input" />
+  <InputField v-model="modelValue" type="search" class="search-input" />
 </template>
 
 <style scoped lang="scss">

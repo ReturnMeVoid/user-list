@@ -1,3 +1,4 @@
+export { default as CheckboxInput } from "./CheckboxInput/CheckboxInput.vue"
 export { default as RangeInput } from "./RangeInput/RangeInput.vue"
 export { default as InputField } from "./InputField/InputField.vue"
 export { default as SearchInput } from "./SearchInput/SearchInput.vue"

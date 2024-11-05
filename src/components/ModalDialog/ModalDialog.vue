@@ -44,7 +44,8 @@ watch(isOpen, (newValue) => {
           <slot name="heading">{{ heading }}</slot>
         </h2>
 
-        <BaseButton size="sm" class="modal-dialog__close-button" @mouseup="closeDialog">✖
+        <BaseButton size="sm" class="modal-dialog__close-button" @mouseup="closeDialog">
+          ✖
         </BaseButton>
       </header>
 

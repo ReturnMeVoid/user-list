@@ -1,14 +1,19 @@
 <script setup lang="ts">
 import { InputWithLabel, ModalDialog } from "@/components"
 import type { User } from "@/modules/user"
-import { USERS_QUERY_ID } from "@/modules/user/api/composables/useUsersQuery"
 import { BaseButton, LoadingSpinner } from "@/ui"
-import { useQueryClient } from "@tanstack/vue-query"
-import { computed, ref } from "vue"
-import { useEditUserMutation } from "../../api/composables/useEditUserMutation"
+import { computed, ref, toRef } from "vue"
+import { useEditUserHandler } from "./composables/useEditUserHandler"
 
 const { user } = defineProps<{ user?: User }>()
 const isOpen = defineModel({ default: false })
+
+const {
+  handleEditUser,
+  isPending,
+  isError,
+  isSuccess
+} = useEditUserHandler(toRef(() => user), isOpen)
 
 const firstName = ref()
 const lastName = ref()
@@ -20,30 +25,6 @@ const onOpen = () => {
   firstName.value = user.firstName
   lastName.value = user.lastName
   email.value = user.email
-}
-
-const queryClient = useQueryClient()
-
-const { mutate, isPending, isError, isSuccess } = useEditUserMutation(() => {
-  queryClient.invalidateQueries({ queryKey: [USERS_QUERY_ID] })
-
-  setTimeout(() => {
-    isOpen.value = false
-  }, 1200)
-})
-
-const handleEdit = (event: Event) => {
-  const form = event.target as HTMLFormElement
-  const { firstName, lastName, email } = Object.fromEntries(new FormData(form))
-
-  if (!user) throw new Error('Cannot find user')
-
-  mutate({
-    id: user.id,
-    firstName: firstName as string,
-    lastName: lastName as string,
-    email: email as string,
-  })
 }
 
 const canSubmit = computed<boolean>(() => {
@@ -60,10 +41,10 @@ const canSubmit = computed<boolean>(() => {
       <span class="accent-text">User ID #{{ user?.id }}</span>
     </template>
 
-    <form method="post" class="user-edit-modal__form" @submit.prevent="handleEdit">
+    <form method="post" class="user-edit-modal__form" @submit.prevent="handleEditUser">
       <InputWithLabel
         v-model="firstName"
-        labelText="First Name"
+        label="First Name"
         name="firstName"
         placeholder="Enter First Name..."
         minLength="2"
@@ -72,7 +53,7 @@ const canSubmit = computed<boolean>(() => {
 
       <InputWithLabel
         v-model="lastName"
-        labelText="Last Name"
+        label="Last Name"
         name="lastName"
         placeholder="Enter Last Name..."
         minLength="2"
@@ -81,7 +62,7 @@ const canSubmit = computed<boolean>(() => {
 
       <InputWithLabel
         v-model="email"
-        labelText="E-mail"
+        label="E-mail"
         name="email"
         placeholder="Enter E-mail..."
         type="email"

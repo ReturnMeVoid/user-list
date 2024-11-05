@@ -1,0 +1,39 @@
+.checkbox-input {
+  position: relative;
+  width: 1.4em;
+  height: 1.4em;
+  appearance: none;
+  cursor: pointer;
+  background-color: white;
+  border: 0.15em solid var(--c-primary);
+  border-radius: 0.3em;
+
+  &[disabled], &[disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:checked::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 13%;
+    cursor: inherit;
+    content: "";
+    background-color: var(--c-primary);
+    transform: translate(40%, 450%) rotate(40deg);
+  }
+
+  &:checked::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 13%;
+    cursor: inherit;
+    content: "";
+    background-color: var(--c-primary);
+    transform: translate(60%, 330%) rotate(130deg);
+  }
+}

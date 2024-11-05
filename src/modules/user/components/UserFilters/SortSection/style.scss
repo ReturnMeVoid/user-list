@@ -1,13 +1,51 @@
-.sort-section__button {
+.sort-button {
+  padding-left: 24px;
+
   &.button_active {
     font-weight: normal;
     color: black;
   }
-}
 
-.arrow-icon {
-  width: 14px;
-  font-size: 24px;
-  color: var(--c-primary);
-  cursor: inherit;
+  &__icon-wrapper {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-bottom: -2px;
+    color: var(--c-primary);
+
+    &_desc {
+      opacity: 1;
+      transform: rotate(180deg);
+    }
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    width: 0.6em;
+    height: 0.6em;
+    font-size: 24px;
+    pointer-events: none;
+
+    &::before {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      width: 30%;
+      height: 80%;
+      content: "";
+      background-color: currentColor;
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      border-color: transparent transparent currentColor;
+      border-style: solid;
+      border-width: 0.3em;
+      transform: translateY(-50%);
+    }
+  }
 }

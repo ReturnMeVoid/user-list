@@ -1,0 +1,22 @@
+.checkbox-with-label {
+  $root: &;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &_disabled {
+    cursor: not-allowed;
+  }
+
+  &__label {
+    margin-top: -0.1em;
+    cursor: inherit;
+
+    #{$root}_disabled & {
+      opacity: 0.5;
+    }
+  }
+}

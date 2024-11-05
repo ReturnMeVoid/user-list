@@ -1,3 +1,4 @@
+export { default as CheckboxWithLabel } from "./CheckboxWithLabel/CheckboxWithLabel.vue"
 export { default as InputWithLabel } from "./InputWithLabel/InputWithLabel.vue"
 export { default as PaginationButtons } from "./PaginationButtons/PaginationButtons.vue"
 export { default as PageHeader } from "./PageHeader/PageHeader.vue"
